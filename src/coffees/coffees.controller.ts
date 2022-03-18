@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Post, Patch, Delete,Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Patch, Delete,Query, SetMetadata } from '@nestjs/common';
 import { query } from 'express';
-import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
+import { Public } from '../common/decorators/public.decorator';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
@@ -11,6 +12,8 @@ export class CoffeesController {
 
     }
 
+    
+    @Public()
     @Get()
     findAll(@Query() paginationquery: PaginationQueryDto){
     //  const {limit, offset } = paginationquery;

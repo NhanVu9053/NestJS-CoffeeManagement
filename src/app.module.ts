@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection, getConnectionOptions } from 'typeorm';
+import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
+import { CommonModule } from './common/common.module';
+
 
 
 @Module({
@@ -12,7 +15,7 @@ import { Connection, getConnectionOptions } from 'typeorm';
     Object.assign(await getConnectionOptions(), {
     autoLoadEntities: true,
     }),
-  }),],
+  }), CoffeeRatingModule, CommonModule],
   controllers: [AppController],
   providers: [AppService],
 })
